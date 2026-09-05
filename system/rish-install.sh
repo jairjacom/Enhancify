@@ -1,24 +1,5 @@
 #!/usr/bin/bash
 
-PKG_NAME="$1"
-APP_NAME="$2"
-EXPORTED_APK_NAME="$3"
-STORAGE="$4"
-INSTALL_TYPE_OVERRIDE="$5"
-
-if [ -z "$STORAGE" ]; then
-    log() { echo "$1"; }
-else
-    log() { echo "- $1" >> "$STORAGE/rish_log.txt"; }
-fi
-
-# Android 17 (dev preview) with the thedjchi Shizuku fork prints an
-# "Entering shell..." banner (to stdout, and possibly stderr) before every
-# command. It is emitted via println(), so it is always on its own line and
-# the real command output follows it. We delete that banner line, and also
-# strip the banner as a prefix if anything follows it on the same line, so
-# captured output (e.g. `$(rish -c "...")`) is never polluted and real
-# success/error output keeps priority. The real rish exit code is preserved.
 rish() {
     local _rish_err _rish_rc _rish_del _rish_strip
     _rish_del='/^[[:space:]]*Entering shell\.\.*[[:space:]]*$/d'
@@ -35,6 +16,18 @@ rish() {
     fi
     return "$_rish_rc"
 }
+
+PKG_NAME="$1"
+APP_NAME="$2"
+EXPORTED_APK_NAME="$3"
+STORAGE="$4"
+INSTALL_TYPE_OVERRIDE="$5"
+
+if [ -z "$STORAGE" ]; then
+    log() { echo "$1"; }
+else
+    log() { echo "- $1" >> "$STORAGE/rish_log.txt"; }
+fi
 
 log ""
 log "      Initiating rish installation"
