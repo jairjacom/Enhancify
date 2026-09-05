@@ -29,7 +29,7 @@ jobs:
       - name: Add upstream and fetch
         run: |
           git remote add upstream https://github.com/Graywizard888/Enhancify.git
-          git fetch upstream --tags
+          git fetch upstream --tags --force
 
       - name: Get upstream latest release tag
         id: upstream
