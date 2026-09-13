@@ -385,6 +385,11 @@ App.theme-cyberpunk-neon .card-title {
     color: #ff007f;
 }
 
+App.theme-cyberpunk-neon ContentContainer {
+    scrollbar-color: #ff007f;
+    scrollbar-color-hover: #00f0ff;
+}
+
 App.theme-cyberpunk-neon Button.btn-primary {
     background: #4a0028;
     border: round #ff007f;
@@ -471,6 +476,11 @@ App.theme-dracula .card:focus {
 
 App.theme-dracula .card-title {
     color: #bd93f9;
+}
+
+App.theme-dracula ContentContainer {
+    scrollbar-color: #bd93f9;
+    scrollbar-color-hover: #ff79c6;
 }
 
 App.theme-dracula Button.btn-primary {
@@ -561,6 +571,11 @@ App.theme-catppuccin .card-title {
     color: #cba6f7;
 }
 
+App.theme-catppuccin ContentContainer {
+    scrollbar-color: #cba6f7;
+    scrollbar-color-hover: #89dceb;
+}
+
 App.theme-catppuccin Button.btn-primary {
     background: #3b2d54;
     border: round #cba6f7;
@@ -647,6 +662,11 @@ App.theme-nordic-frost .card:focus {
 
 App.theme-nordic-frost .card-title {
     color: #88c0d0;
+}
+
+App.theme-nordic-frost ContentContainer {
+    scrollbar-color: #88c0d0;
+    scrollbar-color-hover: #81a1c1;
 }
 
 App.theme-nordic-frost Button.btn-primary {
@@ -737,6 +757,11 @@ App.theme-sunset-amber .card-title {
     color: #ffb703;
 }
 
+App.theme-sunset-amber ContentContainer {
+    scrollbar-color: #ffb703;
+    scrollbar-color-hover: #fb8500;
+}
+
 App.theme-sunset-amber Button.btn-primary {
     background: #4a3400;
     border: round #ffb703;
@@ -823,6 +848,11 @@ App.theme-matrix-retro .card:focus {
 
 App.theme-matrix-retro .card-title {
     color: #00ff00;
+}
+
+App.theme-matrix-retro ContentContainer {
+    scrollbar-color: #00ff00;
+    scrollbar-color-hover: #39ff14;
 }
 
 App.theme-matrix-retro Button {
@@ -922,6 +952,11 @@ App.theme-oled-midnight .card:focus {
 
 App.theme-oled-midnight .card-title {
     color: #00a8ff;
+}
+
+App.theme-oled-midnight ContentContainer {
+    scrollbar-color: #00a8ff;
+    scrollbar-color-hover: #ffffff;
 }
 
 App.theme-oled-midnight Button {

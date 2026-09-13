@@ -22,8 +22,8 @@ class ContentContainer(Container):
         overflow-y: auto;
         overflow-x: auto;
         scrollbar-size-vertical: 2;
-        scrollbar-color: $accent;
-        scrollbar-color-hover: $accent-lighten-1;
+        scrollbar-color: #00ff7f;
+        scrollbar-color-hover: #00e5ff;
     }
     """
 
