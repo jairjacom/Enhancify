@@ -9,7 +9,8 @@ from typing import Optional
 import requests
 from rich.text import Text
 from textual.app import ComposeResult
-from textual.containers import Container, Horizontal, ScrollableContainer, Vertical
+from textual.containers import Container, Horizontal, Vertical
+from src.tui.widgets.content_container import ContentContainer
 from textual.screen import Screen
 from textual.widgets import Button, Footer, Label, Static
 
@@ -37,7 +38,7 @@ class TokenManagerScreen(Screen):
 
         yield CyberHeader(mode_label=mode_label, online_status=net_status)
 
-        with ScrollableContainer(classes="container-box"):
+        with ContentContainer(classes="container-box"):
             with Vertical(classes="card"):
                 yield Label("🎫 GitHub Personal Access Token (Classic)", classes="card-title")
                 yield Label(self.get_token_status_text(), id="token-status-label", classes="card-desc")

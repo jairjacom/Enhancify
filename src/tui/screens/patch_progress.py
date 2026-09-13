@@ -12,7 +12,8 @@ from typing import Optional
 from rich.text import Text
 from textual import work
 from textual.app import ComposeResult
-from textual.containers import Container, Horizontal, ScrollableContainer, Vertical
+from textual.containers import Container, Horizontal, Vertical
+from src.tui.widgets.content_container import ContentContainer
 from textual.screen import Screen
 from textual.widgets import Button, Footer, Label, ProgressBar, RichLog, Static
 
@@ -52,7 +53,7 @@ class PatchProgressScreen(Screen):
 
         yield CyberHeader(mode_label=mode_label, online_status=net_status)
 
-        with ScrollableContainer(classes="container-box"):
+        with ContentContainer(classes="container-box"):
             with Vertical(classes="card"):
                 yield Label(f"🚀 Patching [bold #00ff7f]{app_name} {app_ver}[/] with [bold #00e5ff]{source_name}[/]", classes="card-title")
                 yield Label("Status: [bold #ffd700]Initializing JVM & CLI Patcher...[/]", id="status-label", classes="card-desc")

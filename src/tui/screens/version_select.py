@@ -10,7 +10,8 @@ from typing import Any, Dict, List, Optional
 from rich.text import Text
 from textual import work
 from textual.app import ComposeResult
-from textual.containers import Container, Horizontal, ScrollableContainer, Vertical
+from textual.containers import Container, Horizontal, Vertical
+from src.tui.widgets.content_container import ContentContainer
 from textual.screen import Screen
 from textual.widgets import Button, Footer, Label, ListItem, ListView
 
@@ -46,7 +47,7 @@ class VersionSelectScreen(Screen):
 
         yield CyberHeader(mode_label=mode_label, online_status=net_status)
 
-        with ScrollableContainer(classes="container-box"):
+        with ContentContainer(classes="container-box"):
             with Vertical(classes="card list-card"):
                 yield Label(f"📦 Select Version for [bold #00ff7f]{app_name}[/]", classes="card-title")
                 yield Label("Select a version from APKMirror. [RECOMMENDED] versions are tested by patch developers:", classes="card-desc")

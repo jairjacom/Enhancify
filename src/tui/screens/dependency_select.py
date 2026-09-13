@@ -4,7 +4,8 @@ Mirrors bash Fetch_Dependency menu: choose GmsCore or PotHelper.
 """
 
 from textual.app import ComposeResult
-from textual.containers import ScrollableContainer, Vertical
+from textual.containers import Vertical
+from src.tui.widgets.content_container import ContentContainer
 from textual.screen import Screen
 from textual.widgets import Button, Footer, Label
 
@@ -28,7 +29,7 @@ class DependencySelectScreen(Screen):
 
         yield CyberHeader(mode_label=mode_label, online_status=net_status)
 
-        with ScrollableContainer(classes="container-box"):
+        with ContentContainer(classes="container-box"):
             with Vertical(classes="card"):
                 yield Label("🔌 Fetch Dependency", classes="card-title")
                 yield Label(

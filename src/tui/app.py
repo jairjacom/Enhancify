@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from textual.app import App, ComposeResult
+from textual.binding import Binding
 from textual.screen import Screen
 
 from src.config import config
@@ -43,6 +44,21 @@ class EnhancifyApp(App):
     TITLE = "Enhancify"
     SUB_TITLE = "The Ultimate Custom Revancify Experience"
     CSS_PATH = TCSS_PATH
+
+    # Default AUTO_FOCUS ("*") lands on the first focusable widget in DOM
+    # order, which is the scrollable container itself (it's focusable so it
+    # can be scrolled with the keyboard) — not a button. That means arrow
+    # keys silently scroll the container by a line at a time instead of
+    # moving between options, until something is explicitly touched once.
+    # Restricting the selector to actual controls fixes that on every screen.
+    AUTO_FOCUS = "Button, ListView, Input"
+
+    BINDINGS = [
+        Binding("down", "focus_next_widget", show=False),
+        Binding("right", "focus_next_widget", show=False),
+        Binding("up", "focus_previous_widget", show=False),
+        Binding("left", "focus_previous_widget", show=False),
+    ]
 
     SCREENS = {
         "boot_screen": BootScreen,
@@ -103,6 +119,28 @@ class EnhancifyApp(App):
         except Exception:
             pass
         self.push_screen("main_menu_screen")
+
+    def action_focus_next_widget(self) -> None:
+        """Move focus forward, mirroring Tab. Only fires when the focused
+        widget doesn't already own the arrow key (e.g. ListView cursor)."""
+        if self.screen is not None:
+            widget = self.screen.focus_next()
+            self._scroll_focused_to_top(widget)
+
+    def action_focus_previous_widget(self) -> None:
+        """Move focus backward, mirroring Shift+Tab. See action_focus_next_widget."""
+        if self.screen is not None:
+            widget = self.screen.focus_previous()
+            self._scroll_focused_to_top(widget)
+
+    def _scroll_focused_to_top(self, widget) -> None:
+        """Scroll the newly focused widget to the top of its scrollable
+        ancestor, instead of Textual's default "just barely visible" scroll.
+        On a phone with the on-screen keyboard open, only a few rows of
+        terminal remain — pinning focus to the top keeps it visible/orientable
+        instead of leaving it ambiguously placed within a tiny viewport."""
+        if widget is not None:
+            widget.scroll_visible(top=True, animate=False)
 
     def apply_theme(self, theme_id: str) -> None:
         """Dynamically add theme CSS class to App."""

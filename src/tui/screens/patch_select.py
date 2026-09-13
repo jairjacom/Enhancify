@@ -11,7 +11,8 @@ from typing import Any, Dict, List, Optional, Set
 from rich.text import Text
 from textual import events
 from textual.app import ComposeResult
-from textual.containers import Container, Horizontal, ScrollableContainer, Vertical
+from textual.containers import Container, Horizontal, Vertical
+from src.tui.widgets.content_container import ContentContainer
 from textual.message import Message
 from textual.screen import Screen
 from textual.widgets import Button, Checkbox, Footer, Input, Label, ListItem, ListView, Static
@@ -134,7 +135,7 @@ class PatchSelectScreen(Screen):
 
         yield CyberHeader(mode_label=mode_label, online_status=net_status)
 
-        with ScrollableContainer(classes="container-box"):
+        with ContentContainer(classes="container-box"):
             with Vertical(classes="card list-card"):
                 yield Label(f"🛠️ Select Patches for [bold #00ff7f]{app_name}[/]", classes="card-title")
                 yield Label("Enabled: 0 / 0", id="patch-count-label", classes="card-desc")

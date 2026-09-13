@@ -8,7 +8,8 @@ from typing import List
 
 from rich.text import Text
 from textual.app import ComposeResult
-from textual.containers import Container, Horizontal, ScrollableContainer, Vertical
+from textual.containers import Container, Horizontal, Vertical
+from src.tui.widgets.content_container import ContentContainer
 from textual.screen import Screen
 from textual.widgets import Button, Footer, Label, ListItem, ListView
 
@@ -33,7 +34,7 @@ class UnmountScreen(Screen):
 
         yield CyberHeader(mode_label=mode_label, online_status=net_status)
 
-        with ScrollableContainer(classes="container-box"):
+        with ContentContainer(classes="container-box"):
             with Vertical(classes="card list-card"):
                 yield Label("🔒 Unmount Root Patched Application", classes="card-title")
                 yield Label("Select an active mounted application to unmount and remove boot scripts:", classes="card-desc")

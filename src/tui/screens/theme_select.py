@@ -5,7 +5,8 @@ Allows users to browse and switch between 8 handcrafted color themes with live p
 
 from rich.text import Text
 from textual.app import ComposeResult
-from textual.containers import Container, Horizontal, ScrollableContainer, Vertical
+from textual.containers import Container, Horizontal, Vertical
+from src.tui.widgets.content_container import ContentContainer
 from textual.screen import Screen
 from textual.widgets import Button, Footer, Label, ListItem, ListView
 
@@ -32,7 +33,7 @@ class ThemeSelectScreen(Screen):
 
         yield CyberHeader(mode_label=mode_label, online_status=net_status)
 
-        with ScrollableContainer(classes="container-box"):
+        with ContentContainer(classes="container-box"):
             with Vertical(classes="card list-card"):
                 yield Label("🎨 Personalize Enhancify Theme", classes="card-title")
                 yield Label(f"Current Theme: [bold {cur_theme.primary_color}]{cur_theme.name}[/]", id="active-theme-label", classes="card-desc")

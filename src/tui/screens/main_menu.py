@@ -5,7 +5,8 @@ Provides navigation to all primary Enhancify features with cybernetic styling an
 
 from rich.text import Text
 from textual.app import ComposeResult
-from textual.containers import Container, Grid, Horizontal, ScrollableContainer, Vertical
+from textual.containers import Container, Grid, Horizontal, Vertical
+from src.tui.widgets.content_container import ContentContainer
 from textual.screen import Screen
 from textual.widgets import Button, Footer, Label, Static
 
@@ -39,7 +40,7 @@ class MainMenuScreen(Screen):
         # Classic parity: "Initiated Mode / Status / Arch" block on top of the menu
         yield CyberStatusBar(mode_label=mode_label, online_status=net_status, arch=arch)
 
-        with ScrollableContainer(classes="container-box"):
+        with ContentContainer(classes="container-box"):
             with Vertical(classes="card"):
                 yield Label("🔥 Quick Actions", classes="card-title")
                 yield Label("Select an action below or use keyboard shortcuts:", classes="card-desc")

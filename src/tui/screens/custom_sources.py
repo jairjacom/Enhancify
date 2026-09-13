@@ -7,7 +7,8 @@ from typing import List, Optional
 
 from rich.text import Text
 from textual.app import ComposeResult
-from textual.containers import Container, Horizontal, ScrollableContainer, Vertical
+from textual.containers import Container, Horizontal, Vertical
+from src.tui.widgets.content_container import ContentContainer
 from textual.screen import Screen
 from textual.widgets import Button, Footer, Label, ListItem, ListView
 
@@ -34,7 +35,7 @@ class CustomSourcesScreen(Screen):
 
         yield CyberHeader(mode_label=mode_label, online_status=net_status)
 
-        with ScrollableContainer(classes="container-box"):
+        with ContentContainer(classes="container-box"):
             with Vertical(classes="card list-card"):
                 yield Label("➕ Custom Sources Management", classes="card-title")
                 yield Label("Add or manage custom ReVanced / Morphe patch repositories:", classes="card-desc")

@@ -8,7 +8,8 @@ from typing import Any, Dict, List, Optional, Set
 
 from rich.text import Text
 from textual.app import ComposeResult
-from textual.containers import Container, Horizontal, ScrollableContainer, Vertical
+from textual.containers import Container, Horizontal, Vertical
+from src.tui.widgets.content_container import ContentContainer
 from textual.screen import Screen
 from textual.widgets import Button, Footer, Label, ListItem, ListView
 
@@ -43,7 +44,7 @@ class OptionsEditScreen(Screen):
 
         yield CyberHeader(mode_label=mode_label, online_status=net_status)
 
-        with ScrollableContainer(classes="container-box"):
+        with ContentContainer(classes="container-box"):
             with Vertical(classes="card list-card"):
                 yield Label(f"⚙️ Configure Patch Options for [bold #00ff7f]{app_name}[/]", classes="card-title")
                 yield Label("Select an option below to modify its value, or proceed to start patching:", classes="card-desc")

@@ -11,7 +11,8 @@ from typing import Dict, List, Optional
 
 from textual import work
 from textual.app import ComposeResult
-from textual.containers import ScrollableContainer, Vertical
+from textual.containers import Vertical
+from src.tui.widgets.content_container import ContentContainer
 from textual.screen import Screen
 from textual.widgets import Button, Footer, Label
 
@@ -67,7 +68,7 @@ class SettingsScreen(Screen):
 
         # Single card: with two auto-height cards Textual 8.x splits the
         # container between them, which squashes the button rows.
-        with ScrollableContainer(classes="container-box"):
+        with ContentContainer(classes="container-box"):
             with Vertical(classes="card"):
                 yield Label("⚙️ Configure", classes="card-title")
                 yield Label("Open a module below to manage its options:", classes="card-desc")
