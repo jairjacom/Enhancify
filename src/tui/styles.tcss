@@ -175,6 +175,15 @@ ButtonBar Button {
     border: round #30363d;
     padding: 1;
     margin-bottom: 1;
+    height: auto;
+}
+
+/* Nested Vertical groups (e.g. button stacks) inside a card must size to
+   their content, not fill 1fr — otherwise the card (and the scrollable
+   ContentContainer around it) never sees a true content height and the
+   scrollbar can never detect overflow. */
+.card Vertical {
+    height: auto;
 }
 
 .card:focus {
